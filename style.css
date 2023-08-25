@@ -10,6 +10,7 @@ background: #020609;
  margin: 0; /* Reset default margin */
  padding: 0; /* Reset default padding */
  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+ 
 }
 
 h1 {

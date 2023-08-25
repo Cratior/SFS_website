@@ -1,24 +1,26 @@
-
 body {
-
- font-family: Arial, Helvetica, sans-serif;
- font-size: 19px;
- letter-spacing: 2px;
- word-spacing: 3.6px;
- color: #ffffff;
- margin: 0; /* Reset default margin */
- padding: 0; /* Reset default padding */
- box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 19px;
+  letter-spacing: 2px;
+  word-spacing: 3.6px;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-image: url("Images/python_BG.jpg");
+  background-size:contain; /* Scale the background image to cover the entire viewport */
+  background-repeat:repeat-y; /* Prevent background image from repeating */
+  background-attachment: fixed; /* Keep the background image fixed while scrolling */
 }
 
 h1 {
- text-align: center;
- margin-top: 1em; /* Add margin to center-align the heading */
+  text-align: center;
+  margin-top: 1em;
 }
 
 .header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center; /* Center the content horizontally */
   background-color: rgba(0, 0, 0, 0.6);
   padding: 1em 0;
   border-bottom: 1px solid #ccc;
@@ -27,6 +29,7 @@ h1 {
 .nav ul {
   list-style: none;
   display: flex;
+  justify-content: center; /* Center the content horizontally */
 }
 
 .nav li {
@@ -183,6 +186,19 @@ svg {
   background-color: #f0f0f0;
   padding: 1em 0;
  }
+
+ #page-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* Arrange children vertically */
+  justify-content: space-between; /* Push footer to the bottom */
+}
+
+#content-wrap {
+  flex-grow: 1; /* Allow content to grow and push footer to the bottom */
+  padding-bottom: 2.5rem; /* Footer height */
+}
 
 @media (max-width: 768px) {
  .grid-container {
