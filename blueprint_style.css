@@ -191,27 +191,43 @@ svg {
 
 @media (max-width: 768px) {
  .grid-container {
-   grid-template-columns: repeat(1, 1fr);
+   grid-template-columns: repeat(2, 1fr); /* 2 items per column */
    gap: 1em;
-   padding: 1em;
+   padding: 0.5em; /* Adjust padding for more space */
  }
 
  .grid-item {
    padding: 1em;
+   font-size: 14px; /* Smaller font size for better mobile readability */
+ }
+
+ .grid-item p {
+   margin-top: 0.5em; /* Smaller margin for paragraph text */
+ }
+
+ .grid-item button {
+   padding: 8px 16px; /* Smaller button padding */
  }
 
  .logo-container {
-   max-width: 100%;
+   max-width: 80%; /* Adjust logo container width */
+   padding: 1em;
  }
 
  .footer {
    padding: 0.5em 0;
  }
-
+ 
  .svg-item {
-   width: 24px;
-   height: 24px;
-   margin-right: 5px;
+   width: 18px;
+   height: 18px;
+   margin-right: 3px;
+ }
+
+ .grid-item .main-image,
+ .grid-item .hover-image {
+   width: 14em; /* Adjust image width for smaller screens */
+   height: 9em; /* Adjust image height for smaller screens */
  }
 }
 
