@@ -11,8 +11,11 @@ body {
   background-size:contain; /* Scale the background image to cover the entire viewport */
   background-repeat:repeat-y; /* Prevent background image from repeating */
   background-attachment: fixed; /* Keep the background image fixed while scrolling */
+  overflow-x: hidden; /* Hide content overflow */
 }
-
+element::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
 h1 {
   text-align: center;
   margin-top: 1em;
@@ -185,6 +188,7 @@ svg {
   align-items: center;
   background-color: #f0f0f0;
   padding: 1em 0;
+  flex:auto;
  }
 
  #page-container {
@@ -215,8 +219,13 @@ svg {
  }
 
  .footer {
-   padding: 0.5em 0; /* Adjust padding for smaller screens */
+   padding: 0.1em 0; /* Adjust padding for smaller screens */
  }
+ .svg-item {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
 }
 
 @media (min-width: 769px) and (max-width: 1200px) {
@@ -228,4 +237,9 @@ svg {
  .grid-item {
    padding: 20px; /* Adjust padding for tablet screens */
  }
+ .svg-item {
+  width: 34px;
+  height: 34px;
+  margin-right: 5px;
+}
 }
