@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Blueprint Page</title>
   <link rel="stylesheet" href="./blueprint_style.css">
-
 </head>
 <body>
   <header class="header">
@@ -17,15 +16,14 @@
         <li><a href="Scripts.html">Scripts</a></li>
       </ul>
     </nav>
-    
   </header>
-  
   <section id="page-container" class="content-container">
     <span id="current-page" class="current-page">Page 1</span>
     <div class="grid-container" id="gridContainer">
       <!-- Grid items will be dynamically generated here -->
     </div>
     <div id="pagination" class="pagination"></div> <!-- Pagination container -->
+    
   </section>
 <footer class="footer">
  <a href="https://www.spacex.com/"><svg class="svg-item" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><title>SpaceX</title><path d="M24 7.417C8.882 8.287 1.89 14.75.321 16.28L0 16.583h2.797C10.356 9.005 21.222 7.663 24 7.417zm-17.046 6.35c-.472.321-.945.68-1.398 1.02l2.457 1.796h2.778zM2.948 10.8H.189l3.25 2.381c.473-.321 1.02-.661 1.512-.945Z"/></svg></a>
@@ -35,41 +33,34 @@
  <a href="https://github.com/Cratior"><svg class="svg-item" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
 </footer>
 <script>
-  const itemsPerPage = 10; // Number of items to display per page
+  const itemsPerPage = 10;
   const gridContainer = document.getElementById("gridContainer");
   const paginationContainer = document.getElementById("pagination");
+  let data; // Declare the data variable
+
+  let currentPage = 1;
 
   fetch("blueprints.json")
     .then(response => response.json())
-    .then(data => {
+    .then(fetchedData => {
+      data = fetchedData; // Assign data
       const totalPages = Math.ceil(data.length / itemsPerPage);
-
-      for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
-        const paginationButton = document.createElement("button");
-        paginationButton.textContent = pageNum;
-        paginationButton.addEventListener("click", () => {
-          window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top
-          displayPage(pageNum, data);
-        });
-        paginationContainer.appendChild(paginationButton);
-      }
-
-      displayPage(1, data);
+      displayPage(currentPage, data, totalPages);
     })
     .catch(error => console.error("Error fetching data:", error));
 
-  function displayPage(pageNum, data) {
+
+  function displayPage(pageNum, data, totalPages) {
     gridContainer.innerHTML = "";
 
     const currentPageElement = document.getElementById("current-page");
-  currentPageElement.textContent = `Page ${pageNum}`;
+    currentPageElement.textContent = `Page ${pageNum}`;
 
     const startIndex = (pageNum - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 
     for (let i = startIndex; i < endIndex && i < data.length; i++) {
       const item = data[i];
-
       const gridItem = document.createElement("div");
       gridItem.className = "grid-item";
 
@@ -109,8 +100,65 @@
 
       gridContainer.appendChild(gridItem);
     }
-  }
-</script>
 
+    updatePaginationButtons(pageNum, totalPages);
+  }
+
+  function updatePaginationButtons(currentPage, totalPages) {
+    paginationContainer.innerHTML = "";
+
+    const addButton = pageNum => {
+        const button = document.createElement("button");
+        button.textContent = pageNum;
+        button.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            displayPage(pageNum, data, totalPages);
+        });
+        paginationContainer.appendChild(button);
+    };
+
+    // Add the "First Page" button only if the current page is not the first page
+    if (currentPage > 2) {
+        addButton(1);
+    }
+
+    if (currentPage > 1) {
+        addButton(currentPage - 1); // Previous page button
+    }
+
+    addButton(currentPage); // Current page button
+
+    if (currentPage < totalPages) {
+        addButton(currentPage + 1); // Next page button
+    }
+
+    const searchInput = document.createElement("input");
+    searchInput.type = "number";
+    searchInput.min = 1;
+    searchInput.max = totalPages;
+    searchInput.value = currentPage;
+    searchInput.style.width = "3em";
+
+    const goButton = document.createElement("button");
+    goButton.textContent = "Go";
+    goButton.addEventListener("click", () => {
+        const pageNumber = parseInt(searchInput.value);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= totalPages) {
+            displayPage(pageNumber, data, totalPages);
+        }
+    });
+
+    paginationContainer.appendChild(searchInput);
+    paginationContainer.appendChild(goButton);
+
+    const lastButton = document.createElement("button");
+    lastButton.textContent = totalPages;
+    lastButton.addEventListener("click", () => {
+        displayPage(totalPages, data, totalPages);
+    });
+    paginationContainer.appendChild(lastButton);
+}
+</script>
 </body>
 </html>
