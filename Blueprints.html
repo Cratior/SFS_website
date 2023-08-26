@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Blueprint Page</title>
   <link rel="stylesheet" href="./blueprint_style.css">
+
 </head>
 <body>
   <header class="header">
@@ -16,8 +17,11 @@
         <li><a href="Scripts.html">Scripts</a></li>
       </ul>
     </nav>
+    
   </header>
+  
   <section id="page-container" class="content-container">
+    <span id="current-page" class="current-page">Page 1</span>
     <div class="grid-container" id="gridContainer">
       <!-- Grid items will be dynamically generated here -->
     </div>
@@ -56,6 +60,9 @@
 
   function displayPage(pageNum, data) {
     gridContainer.innerHTML = "";
+
+    const currentPageElement = document.getElementById("current-page");
+  currentPageElement.textContent = `Page ${pageNum}`;
 
     const startIndex = (pageNum - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
