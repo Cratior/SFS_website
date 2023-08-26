@@ -1,36 +1,11 @@
 from bs4 import BeautifulSoup
 import json
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+import requests
 
-# Set up Chrome options to mimic a browser
-chrome_options = Options()
-chrome_options.add_argument("--headless")  # Run Chrome in headless mode
-chrome_options.add_argument("--disable-gpu")
-chrome_options.add_argument("--window-size=1920x1080")
-chrome_options.add_argument("--disable-extensions")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--disable-dev-shm-usage")
-
-# Provide the path to your ChromeDriver executable
-chromedriver_path = "/path/to/chromedriver"
-
-# URL of the Discord chat page
-url = "https://discord.com/channels/400050897700257792/993056668118163466"
-
-# Initialize the Chrome WebDriver with options directly
-driver = webdriver.Chrome(chromedriver_path, options=chrome_options)
-
-# Open the URL
-driver.get(url)
-
-# Get the page source after waiting for a moment to load the content
-html_content = driver.page_source
-
-# Close the WebDriver
-driver.quit()
-
-# Use BeautifulSoup to parse the page source
+html_content = """
+<div class="message-2CShn3 cozyMessage-1DWF9U groupStart-3Mlgv1 wrapper-30-Nkg cozy-VmLDNB zalgo-26OfGz" role="article" data-list-item-id="chat-messages___chat-messages-993056668118163466-1143403005237014628" tabindex="-1" aria-setsize="-1" aria-roledescription="Message" aria-labelledby="message-username-1143403005237014628 uid_1 message-content-1143403005237014628 message-accessories-1143403005237014628 uid_2 message-timestamp-1143403005237014628" aria-describedby="uid_3 message-reactions-1143403005237014628"><div class="contents-2MsGLg"><img src="https://cdn.discordapp.com/avatars/1075321825439010836/fa969f15dd51d8e806554a2ddf5e0170.webp?size=80" aria-hidden="true" class="avatar-2e8lTP clickable-31pE3P" alt=" "><h3 class="header-2jRmjb" aria-labelledby="message-username-1143403005237014628 message-timestamp-1143403005237014628"><span id="message-username-1143403005237014628" class="headerText-2z4IhQ"><span class="username-h_Y3Us desaturateUserColors-1O-G89 clickable-31pE3P" aria-expanded="false" role="button" tabindex="0" style="color: rgb(190, 146, 195);">The espacial cat ^-^</span></span><span class="timestamp-p1Df1m timestampInline-_lS3aK"><time aria-label="August 22, 2023 5:35 AM" id="message-timestamp-1143403005237014628" datetime="2023-08-22T04:35:19.849Z"><i class="separator-AebOhG" aria-hidden="true"> — </i>08/22/2023 5:35 AM</time></span></h3><div id="message-content-1143403005237014628" class="markup-eYLPri messageContent-2t3eCI"><a class="anchor-1X4H4q anchorUnderlineOnHover-wiZFZ_" href="https://sharing.spaceflightsimulator.app/rocket/1eno5kCkEe6d97uAd13aUA" rel="noreferrer noopener" target="_blank" title="https://sharing.spaceflightsimulator.app/rocket/1eno5kCkEe6d97uAd13aUA" role="button" tabindex="0"><span>https://sharing.spaceflightsimulator.app/rocket/1eno5kCkEe6d97uAd13aUA</span></a><span>
+New rocket called Voltok 1</span><span>, it can go to moon mars venus and mercury hope like it</span><span>!
+DLC and Expansion pack needed</span> <span class="timestamp-p1Df1m"><time aria-label="Edited August 22, 2023 5:35 AM" datetime="2023-08-22T04:35:54.864Z"><span class="edited-1v5nT8">(edited)</span></time></span></div></div><div id="message-accessories-1143403005237014628" class="container-2sjPya"><div class="mediaAttachmentsContainer-1WGRWy"><div class="oneByTwoGrid-25mx0i"><div class="oneByTwoGridItem-2sqHh9"><div class="messageAttachment-CZp8Iv messageAttachmentNoJustify-lIzP9c messageAttachmentFullWidth-21dFmL messageAttachmentMediaMosaic-2ic1yt hideOverflow-bsO1Md"><div class="imageContent-3Av-9c embedWrapper-1MtIDg attachmentContentContainer-3WAhvQ attachmentContentItem-UKeiCx obscured-20kiwN"><div class="imageContainer-10XenG"><div class="imageWrapper-oMkQl4 imageZoom-3yLCXY clickable-LksVCf lazyImgContainer-3k3gRy" style="display: block; max-height: inherit; margin: auto; width: 100%; height: 100%;"><a tabindex="-1" aria-hidden="true" class="originalLink-Azwuo9" href="https://cdn.discordapp.com/attachments/993056668118163466/1143403005354451014/Screenshot_20230822-013045_Spaceflight_Simulator.jpg" data-role="img" data-safe-src="https://media.discordapp.net/attachments/993056668118163466/1143403005354451014/Screenshot_20230822-013045_Spaceflight_Simulator.jpg?width=273&amp;height=273"></a><div class="clickableWrapper-2WTAkL" tabindex="0" aria-label="Image" aria-describedby="uid_4" role="button"><img class="lazyImg-ewiNCh" alt="Image" src="https://media.discordapp.net/attachments/993056668118163466/1143403005354451014/Screenshot_20230822-013045_Spaceflight_Simulator.jpg?width=273&amp;height=273" style="display: block; object-fit: cover; min-width: 100%; min-height: 100%; max-width: calc(100% + 1px);"></div></div></div></div></div></div><div class="oneByTwoGridItem-2sqHh9"><div class="messageAttachment-CZp8Iv messageAttachmentNoJustify-lIzP9c messageAttachmentFullWidth-21dFmL messageAttachmentMediaMosaic-2ic1yt hideOverflow-bsO1Md"><div class="imageContent-3Av-9c embedWrapper-1MtIDg attachmentContentContainer-3WAhvQ attachmentContentItem-UKeiCx obscured-20kiwN"><div class="imageContainer-10XenG"><div class="imageWrapper-oMkQl4 imageZoom-3yLCXY clickable-LksVCf lazyImgContainer-3k3gRy" style="display: block; max-height: inherit; margin: auto; width: 100%; height: 100%;"><a tabindex="-1" aria-hidden="true" class="originalLink-Azwuo9" href="https://cdn.discordapp.com/attachments/993056668118163466/1143403005627072642/Screenshot_20230822-013147_Spaceflight_Simulator.jpg" data-role="img" data-safe-src="https://media.discordapp.net/attachments/993056668118163466/1143403005627072642/Screenshot_20230822-013147_Spaceflight_Simulator.jpg?width=273&amp;height=273"></a><div class="clickableWrapper-2WTAkL" tabindex="0" aria-label="Image" aria-describedby="uid_4" role="button"><img class="lazyImg-ewiNCh" alt="Image" src="https://media.discordapp.net/attachments/993056668118163466/1143403005627072642/Screenshot_20230822-013147_Spaceflight_Simulator.jpg?width=273&amp;height=273" style="display: block; object-fit: cover; min-width: 100%; min-height: 100%; max-width: calc(100% + 1px);"></div></div></div></div></div></div></div></div><div class="reactions-3ryImn" role="group" id="message-reactions-1143403005237014628"><div></div><div><div class="reaction-3vwAF2" style="opacity: 1;"><div class="reactionInner-YJjOtT" aria-expanded="false" aria-disabled="false" aria-label="thumbsup, 22 reactions, press to react" aria-pressed="false" role="button" tabindex="0"><div class=""></div><div><img src="/assets/08c0a077780263f3df97613e58e71744.svg" alt="👍" draggable="false" class="emoji" data-type="emoji" data-name="👍"></div><div class="reactionCount-26U4As" style="min-width: 18px;">22</div></div></div></div><div><div class="reaction-3vwAF2" style="opacity: 1;"><div class="reactionInner-YJjOtT" aria-expanded="false" aria-disabled="false" aria-label="thumbsdown, 4 reactions, press to react" aria-pressed="false" role="button" tabindex="0"><div class=""></div><div><img src="/assets/66e3cbf517993ee5261f23687a2bc032.svg" alt="👎" draggable="false" class="emoji" data-type="emoji" data-name="👎"></div><div class="reactionCount-26U4As" style="min-width: 9px;">4</div></div></div></div></div></div><div class="buttonContainer-1502pf"><div class="buttons-3dF5Kd container-2gUZhU isHeader-2bbX-L" role="group" aria-label="Message Actions"><div class="buttonsInner-1ynJCY wrapper-2vIMkT"><div class="button-3bklZh" aria-label="Reply" role="button" tabindex="0"><svg class="icon-1zidb7" width="24" height="24" viewBox="0 0 24 24"><path d="M10 8.26667V4L3 11.4667L10 18.9333V14.56C15 14.56 18.5 16.2667 21 20C20 14.6667 17 9.33333 10 8.26667Z" fill="currentColor"></path></svg></div><div class="button-3bklZh" aria-label="More" aria-expanded="false" role="button" tabindex="0"><svg class="icon-1zidb7" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M7 12.001C7 10.8964 6.10457 10.001 5 10.001C3.89543 10.001 3 10.8964 3 12.001C3 13.1055 3.89543 14.001 5 14.001C6.10457 14.001 7 13.1055 7 12.001ZM14 12.001C14 10.8964 13.1046 10.001 12 10.001C10.8954 10.001 10 10.8964 10 12.001C10 13.1055 10.8954 14.001 12 14.001C13.1046 14.001 14 13.1055 14 12.001ZM19 10.001C20.1046 10.001 21 10.8964 21 12.001C21 13.1055 20.1046 14.001 19 14.001C17.8954 14.001 17 13.1055 17 12.001C17 10.8964 17.8954 10.001 19 10.001Z"></path></svg></div></div></div></div></div>"""
 soup = BeautifulSoup(html_content, "html.parser")
 
 blueprints = []
@@ -41,6 +16,7 @@ for message_div in soup.find_all("div", class_="message-2CShn3"):
     message_content = message_div.find("div", class_="markup-eYLPri")
     link = message_div.find("a", class_="anchor-1X4H4q")["href"]
     description = message_content.get_text().replace(link, "").strip()
+
 
     image_tags = message_div.find_all("img", class_="lazyImg-ewiNCh")
     image_src = image_tags[0]["src"] if image_tags else ""

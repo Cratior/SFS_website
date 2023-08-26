@@ -7,25 +7,22 @@
   <title>Blueprint Page</title>
   <link rel="stylesheet" href="./blueprint_style.css">
 </head>
-<main>
- 
-</main>
 <body>
- <header class="header">
-  <nav class="nav">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="Blueprints.html">>Blueprints</a></li>
-      <li><a href="Scripts.html">Scripts</a></li>
-    </ul>
-  </nav>
-</header>
-
-<section id="page-container" class="content-container">
- <div class="grid-container" id="gridContainer">
-   <!-- Grid items will be dynamically generated here -->
- </div>
-</section>
+  <header class="header">
+    <nav class="nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Blueprints.html">Blueprints</a></li>
+        <li><a href="Scripts.html">Scripts</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="page-container" class="content-container">
+    <div class="grid-container" id="gridContainer">
+      <!-- Grid items will be dynamically generated here -->
+    </div>
+    <div id="pagination" class="pagination"></div> <!-- Pagination container -->
+  </section>
 <footer class="footer">
  <a href="https://www.spacex.com/"><svg class="svg-item" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><title>SpaceX</title><path d="M24 7.417C8.882 8.287 1.89 14.75.321 16.28L0 16.583h2.797C10.356 9.005 21.222 7.663 24 7.417zm-17.046 6.35c-.472.321-.945.68-1.398 1.02l2.457 1.796h2.778zM2.948 10.8H.189l3.25 2.381c.473-.321 1.02-.661 1.512-.945Z"/></svg></a>
  <a href="https://www.nasa.gov/"><svg class="svg-item" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><title>NASA</title><path d="M4.344 13.598c.075.281.195.39.407.39.22 0 .335-.132.335-.39V8.804h1.379v4.794c0 .675-.088.968-.43 1.31-.247.248-.703.439-1.278.439-.464 0-.909-.154-1.192-.438-.249-.25-.386-.505-.599-1.311l-.846-3.196c-.074-.281-.194-.39-.406-.39-.22 0-.336.132-.336.39v4.794H0v-4.794c0-.675.088-.968.43-1.31.247-.248.703-.439 1.278-.439.464 0 .909.154 1.192.438.249.25.385.505.599 1.311zM22.575 15.196l-1.591-4.98a.415.415 0 00-.06-.132.226.226 0 00-.186-.082.226.226 0 00-.185.082.414.414 0 00-.06.132l-1.591 4.98h-1.425l1.739-5.44c.09-.283.22-.524.384-.684.282-.275.614-.419 1.138-.419s.857.144 1.138.42c.164.16.294.4.384.683L24 15.196h-1.425zM15.531 15.196c.903 0 1.344-.192 1.692-.538.385-.383.569-.802.569-1.427 0-.553-.202-1.064-.51-1.37-.403-.4-.903-.527-1.719-.527h-1.142c-.436 0-.61-.053-.748-.188-.094-.093-.139-.23-.139-.393 0-.168.04-.334.156-.448.103-.1.243-.147.511-.147h3.301V8.804h-3.049c-.903 0-1.343.192-1.691.538-.385.383-.57.802-.57 1.427 0 .553.203 1.064.51 1.37.404.4.904.527 1.72.527h1.141c.437 0 .61.053.748.188.095.093.14.23.14.393 0 .169-.041.335-.157.448-.102.1-.242.147-.51.147h-3.405l-1.306-4.086c-.09-.283-.22-.524-.384-.684-.282-.275-.615-.419-1.139-.419s-.857.144-1.138.42c-.165.16-.294.4-.385.683l-1.738 5.44h1.424l1.592-4.98a.415.415 0 01.06-.132.226.226 0 01.185-.082c.082 0 .142.028.186.082a.413.413 0 01.06.132l1.591 4.98h4.144z"/></svg></a>
@@ -34,56 +31,79 @@
  <a href="https://github.com/Cratior"><svg class="svg-item" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
 </footer>
 <script>
- // JavaScript code to dynamically generate the grid items
- const gridContainer = document.getElementById("gridContainer");
+  const itemsPerPage = 10; // Number of items to display per page
+  const gridContainer = document.getElementById("gridContainer");
+  const paginationContainer = document.getElementById("pagination");
 
- // Fetch data from blueprints.json
- fetch("blueprints.json")
-   .then(response => response.json())
-   .then(data => {
-     // Create grid items based on the fetched data
-     data.forEach(item => {
-       const gridItem = document.createElement("div");
-       gridItem.className = "grid-item";
+  fetch("blueprints.json")
+    .then(response => response.json())
+    .then(data => {
+      const totalPages = Math.ceil(data.length / itemsPerPage);
 
-       const imageContainer = document.createElement("div");
-       imageContainer.className = "image-container";
+      for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+        const paginationButton = document.createElement("button");
+        paginationButton.textContent = pageNum;
+        paginationButton.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top
+          displayPage(pageNum, data);
+        });
+        paginationContainer.appendChild(paginationButton);
+      }
 
-       const mainImage = document.createElement("img");
-       mainImage.src = item.imageSrc;
-       mainImage.alt = item.title;
-       mainImage.className = "main-image";
+      displayPage(1, data);
+    })
+    .catch(error => console.error("Error fetching data:", error));
 
-       const hoverImage = document.createElement("img");
-       hoverImage.src = item.hoverImageSrc;
-       hoverImage.alt = `${item.title} hover`;
-       hoverImage.className = "hover-image";
+  function displayPage(pageNum, data) {
+    gridContainer.innerHTML = "";
 
-       imageContainer.appendChild(mainImage);
-       imageContainer.appendChild(hoverImage);
+    const startIndex = (pageNum - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
 
-       const title = document.createElement("h2");
-       title.textContent = item.title;
+    for (let i = startIndex; i < endIndex && i < data.length; i++) {
+      const item = data[i];
 
-       const description = document.createElement("p");
-       description.textContent = item.description;
+      const gridItem = document.createElement("div");
+      gridItem.className = "grid-item";
 
-       const downloadLink = document.createElement("a");
-       downloadLink.href = item.downloadLink;
-       downloadLink.target = "_blank";
-       const downloadButton = document.createElement("button");
-       downloadButton.textContent = "Download";
-       downloadLink.appendChild(downloadButton);
+      const imageContainer = document.createElement("div");
+      imageContainer.className = "image-container";
 
-       gridItem.appendChild(imageContainer);
-       gridItem.appendChild(title);
-       gridItem.appendChild(description);
-       gridItem.appendChild(downloadLink);
+      const mainImage = document.createElement("img");
+      mainImage.src = item.imageSrc;
+      mainImage.alt = item.title;
+      mainImage.className = "main-image";
 
-       gridContainer.appendChild(gridItem);
-     });
-   })
-   .catch(error => console.error("Error fetching data:", error));
+      const hoverImage = document.createElement("img");
+      hoverImage.src = item.hoverImageSrc;
+      hoverImage.alt = `${item.title} hover`;
+      hoverImage.className = "hover-image";
+
+      imageContainer.appendChild(mainImage);
+      imageContainer.appendChild(hoverImage);
+
+      const title = document.createElement("h2");
+      title.textContent = item.title;
+
+      const description = document.createElement("p");
+      description.textContent = item.description;
+
+      const downloadLink = document.createElement("a");
+      downloadLink.href = item.downloadLink;
+      downloadLink.target = "_blank";
+      const downloadButton = document.createElement("button");
+      downloadButton.textContent = "Download";
+      downloadLink.appendChild(downloadButton);
+
+      gridItem.appendChild(imageContainer);
+      gridItem.appendChild(title);
+      gridItem.appendChild(description);
+      gridItem.appendChild(downloadLink);
+
+      gridContainer.appendChild(gridItem);
+    }
+  }
 </script>
+
 </body>
 </html>
