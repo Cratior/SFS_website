@@ -95,19 +95,6 @@ H2 {
   color: #1F7EC1;
 }
 
-.svg-item {
-  width: 44px;
-  height: 44px;
-  margin-right: 5px;
-}
-
-.footer {
- display: flex;
- justify-content: center;
- align-items: center;
- background-color: #f0f0f0;
- padding: 1em 0;
-}
 
 .logo-container {
  display: flex;
@@ -125,10 +112,6 @@ H2 {
  height: auto; /* Maintain aspect ratio */
 }
 
-svg {
- padding-left: 1em;
- padding-right: 1em;
-}
 
 #page-container {
  position: relative;
@@ -139,32 +122,49 @@ svg {
  padding-bottom: 2.5rem; /* Footer height */
 }
 
+/* Your existing CSS rules here */
+
 @media (max-width: 768px) {
- .grid-container {
-   grid-template-columns: repeat(1, 1fr);
-   padding: 10px; /* Adjust padding for smaller screens */
- }
+  main {
+    padding: 10px;
+  }
 
- .grid-item {
-   padding: 15px; /* Adjust padding for smaller screens */
- }
+  .iframes-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 
- .logo-container {
-   max-width: 100%;
- }
+  .iframe-box {
+    width: 100%;
+  }
 
- .footer {
-   padding: 0.5em 0; /* Adjust padding for smaller screens */
- }
+  .profiles-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .profile-box {
+    text-align: center;
+    width: 100%;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1200px) {
- .grid-container {
-   grid-template-columns: repeat(2, 1fr);
-   padding: 15px; /* Adjust padding for tablet screens */
- }
+  main {
+    padding: 15px; /* Adjust padding for tablet screens */
+  }
 
- .grid-item {
-   padding: 20px; /* Adjust padding for tablet screens */
- }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .grid-item {
+    padding: 20px; /* Adjust padding for tablet screens */
+  }
 }
